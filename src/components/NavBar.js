@@ -1,17 +1,20 @@
 import React from 'react'
 import { Container, Navbar, Nav} from 'react-bootstrap'
+import { NavLink } from 'react-router-dom'
 
 const NavBar = () => {
     return (
     <Navbar bg="light" expand="md">
         <Container>
-        <Navbar.Brand>Momento</Navbar.Brand>
+            <NavLink to="/">
+                <Navbar.Brand>Momento</Navbar.Brand>
+            </NavLink>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-            <Nav.Link>Home</Nav.Link>
-            <Nav.Link>Sign In</Nav.Link>
-            <Nav.Link>Join</Nav.Link>
+                <NavLink exact to="/">Home</NavLink>
+                <NavLink to="/signin">Sign In</NavLink>
+                <NavLink to="/signup">Join</NavLink>
             </Nav>
         </Navbar.Collapse>
         </Container>
