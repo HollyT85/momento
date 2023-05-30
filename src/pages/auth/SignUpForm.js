@@ -8,7 +8,7 @@ import axios from "axios";
 
 const SignUpForm = () => {
 
-    const[signUpData, setSignUpData] =useState({
+    const[signUpData, setSignUpData] = useState({
         user: '',
         password1: '',
         password2: '',
@@ -53,15 +53,21 @@ const SignUpForm = () => {
             <Form.Label>Password</Form.Label>
             <Form.Control type="password" placeholder="Enter password" name='password1' value={password1} onChange={handleChange} />
         </Form.Group>
+        {errors.password1?.map((message, idx)=> 
+        <Alert variant='warning' key='idx'>{message}</Alert>)}
 
         <Form.Group className="mb-3" controlId="password2">
             <Form.Label>Confirm Password</Form.Label>
             <Form.Control type="password" placeholder="Re-enter password" name='password2' value={password2} onChange={handleChange} />
         </Form.Group>
+        {errors.password2?.map((message, idx)=> 
+        <Alert variant='warning' key='idx'>{message}</Alert>)}
 
         <Button variant="primary" type="submit">
         Submit
         </Button>
+        {errors.non_field_errors?.map((message, idx)=> 
+        <Alert variant='warning' key='idx'>{message}</Alert>)}
     </Form>
 
         </Container>
