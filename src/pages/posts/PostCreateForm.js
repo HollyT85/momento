@@ -12,6 +12,7 @@ import Asset from "../../components/Asset";
 import { Image } from "react-bootstrap";
 import { useHistory } from "react-router-dom/";
 import { axiosReq } from "../../api/axiosDefaults";
+import axios from "axios";
 
 function PostCreateForm() {
     const [errors, setErrors] = useState({});
