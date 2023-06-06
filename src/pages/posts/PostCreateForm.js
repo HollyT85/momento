@@ -43,54 +43,54 @@ function PostCreateForm() {
         }
     };
 
-    const handleSubmit = async(event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        const formData = new FormData()
-
-        formData.append('title', title)
-        formData.append('content', content)
-        formData.append('image', imageInput.current.files[0])
-
+        const formData = new FormData();
+    
+        formData.append("title", title);
+        formData.append("content", content);
+        formData.append("image", imageInput.current.files[0]);
+    
         try {
-            const {data}  = await axiosReq.post('/posts/', formData)
-            history.push(`/posts/${data.id}`)
-        } catch(err) {
-            console.log(err)
-            if (err.response?.status !==401){
-                setErrors(err.respose?.data)
+            const { data } = await axiosReq.post("/posts/", formData);
+            history.push(`/posts/${data.id}`);
+        } catch (err) {
+            console.log(err);
+            if (err.response?.status !== 401) {
+            setErrors(err.response.data);
             }
         }
-    }
+        };
 
     const textFields = (
-    <div className="text-center">
-        <Form.Group>
-        <Form.Label>Title</Form.Label>
-        <Form.Control
-            type="text"
-            name="title"
-            value={title}
-            onChange={handleChange}
-        />
-        </Form.Group>
-        <Form.Group>
-        <Form.Label>Content</Form.Label>
-        <Form.Control
-            as="textarea"
-            rows={6}
-            name="content"
-            value={content}
-            onChange={handleChange}
-        />
-        </Form.Group>
+        <div className="text-center">
+            <Form.Group>
+            <Form.Label>Title</Form.Label>
+            <Form.Control
+                type="text"
+                name="title"
+                value={title}
+                onChange={handleChange}
+            />
+            </Form.Group>
+            <Form.Group>
+            <Form.Label>Content</Form.Label>
+            <Form.Control
+                as="textarea"
+                rows={6}
+                name="content"
+                value={content}
+                onChange={handleChange}
+            />
+            </Form.Group>
 
-        <Button onClick={() => {}}>
-        Cancel
-        </Button>
-        <Button type="submit">
-        Create Post
-        </Button>
-    </div>
+            <Button onClick={() => {}}>
+            Cancel
+            </Button>
+            <Button type="submit">
+            Create Post
+            </Button>
+        </div>
     );
 
     return (
