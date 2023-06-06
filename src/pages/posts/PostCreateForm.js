@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import Form from "react-bootstrap/Form";
+import { Form } from "react-bootstrap/";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -26,6 +26,15 @@ function PostCreateForm() {
         });
     };
 
+    const handleChangeImage = (event) => {
+        if (event.target.files.length) {
+          URL.revokeObjectURL(image);
+          setPostData({
+            ...postData,
+            image: URL.createObjectURL(event.target.files[0]),
+          });
+        }
+      };
 
     const textFields = (
     <div className="text-center">
@@ -63,9 +72,15 @@ function PostCreateForm() {
                     <Asset src={Upload} message="Click or tap to upload an image" />
                 </Form.Label>
 
-                <Form.File accept />
+                <Form.File
+                id="image-upload"
+                accept="image/*"
+                onChange={handleChangeImage}
+                />
 
             </Form.Group>
+            
+
             <div className="d-md-none">{textFields}</div>
             </Container>
         </Col>
