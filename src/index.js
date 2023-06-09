@@ -6,34 +6,34 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter as Router } from "react-router-dom";
 import { CurrentUserProvider } from "./contexts/CurrentUserContext";
 
-ReactDOM.render(
-  <React.StrictMode>
-    <Router>
-      <CurrentUserProvider>
-        <App />
-      </CurrentUserProvider>
-    </Router>
-  </React.StrictMode>,
-  document.getElementById("root")
-);
-
-
-//import { StrictMode } from 'react';
-//import { createRoot } from 'react-dom/client';
-
-//const rootElement = document.getElementById("root")
-//const root = createRoot(rootElement);
-
-//root.render(
-//  <StrictMode>
+// ReactDOM.render(
+//  <React.StrictMode>
 //    <Router>
 //      <CurrentUserProvider>
 //        <App />
 //      </CurrentUserProvider>
 //    </Router>
-//  </StrictMode>,
-//  
+//  </React.StrictMode>,
+//  document.getElementById("root")
 //);
+
+
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+
+const rootElement = document.getElementById("root")
+const root = createRoot(rootElement);
+
+root.render(
+  <StrictMode>
+    <Router>
+      <CurrentUserProvider>
+        <App />
+      </CurrentUserProvider>
+    </Router>
+  </StrictMode>,
+  
+);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
